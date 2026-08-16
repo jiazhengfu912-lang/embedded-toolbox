@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Rust / Tauri build output
+src-tauri/target/
+
+# SQLite session recordings
+*.etdb
+*.etdb-wal
+*.etdb-shm
+
+# Keil MDK-ARM generated output and per-user settings
+Test/**/Objects/
+Test/**/Listings/
+Test/**/*.axf
+Test/**/*.bin
+Test/**/*.hex
+Test/**/*.elf
+Test/**/*.map
+Test/**/*.o
+Test/**/*.d
+Test/**/*.crf
+Test/**/*.lst
+Test/**/*.uvguix.*
+Test/**/*.uvoptx
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,33 @@
+{
+  "id": "0198a3e8-1f48-7c11-8db8-f0416d471001",
+  "name": "PID Loop Demo",
+  "projectSchemaVersion": "1.0.0",
+  "pipelineSemanticVersion": "1.0.0",
+  "appVersion": "0.1.0",
+  "source": {
+    "id": "0198a3e8-1f48-7c11-8db8-f0416d471002",
+    "name": "Primary device",
+    "serial": { "id": "0198a3e8-1f48-7c11-8db8-f0416d471011", "portName": "COM7", "baudRate": 115200, "dataBits": 8, "stopBits": 1, "parity": "none", "flowControl": "none", "timeoutMs": 20 }
+  },
+  "framer": { "mode": "endDelimiter", "id": "0198a3e8-1f48-7c11-8db8-f0416d471009", "delimiter": [10], "maxFrameBytes": 65536 },
+  "checksum": null,
+  "decoder": { "kind": "csv", "id": "0198a3e8-1f48-7c11-8db8-f0416d471012", "delimiter": "," },
+  "channels": [
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471003", "name": "Setpoint", "unit": "%", "color": "#f1b761", "source": { "kind": "csvIndex", "index": 0 }, "transforms": [] },
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471004", "name": "Measured", "unit": "%", "color": "#46d8b1", "source": { "kind": "csvIndex", "index": 1 }, "transforms": [{ "kind": "ema", "id": "0198a3e8-1f48-7c11-8db8-f0416d471010", "alpha": 0.18 }] },
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471005", "name": "Output", "unit": "%", "color": "#7197ff", "source": { "kind": "csvIndex", "index": 2 }, "transforms": [] }
+  ],
+  "commands": [{ "id": "0198a3e8-1f48-7c11-8db8-f0416d471006", "name": "Set PID", "textTemplate": "PID,{kp},{ki},{kd}\r\n", "minGapMs": 20 }],
+  "pidProfiles": [{
+    "id": "0198a3e8-1f48-7c11-8db8-f0416d471007", "name": "Main loop",
+    "setpointChannelId": "0198a3e8-1f48-7c11-8db8-f0416d471003", "measuredChannelId": "0198a3e8-1f48-7c11-8db8-f0416d471004", "outputChannelId": "0198a3e8-1f48-7c11-8db8-f0416d471005", "commandProfileId": "0198a3e8-1f48-7c11-8db8-f0416d471006",
+    "kpMin": 0.0, "kpMax": 100.0, "kiMin": 0.0, "kiMax": 100.0, "kdMin": 0.0, "kdMax": 100.0
+  }],
+  "views": [
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471013", "name": "Terminal", "kind": "terminal", "settings": {} },
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471014", "name": "Plotter", "kind": "plotter", "settings": {} },
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471015", "name": "Packets", "kind": "packets", "settings": {} },
+    { "id": "0198a3e8-1f48-7c11-8db8-f0416d471016", "name": "PID Tuner", "kind": "pidTuner", "settings": {} }
+  ],
+  "ui": {}
+}

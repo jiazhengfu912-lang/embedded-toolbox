@@ -1,0 +1,29 @@
+{
+  "id": "0198a3e8-2020-7d12-9ab1-124d2c100001",
+  "name": "CSV Power Telemetry",
+  "projectSchemaVersion": "1.0.0",
+  "pipelineSemanticVersion": "1.0.0",
+  "appVersion": "0.1.0",
+  "source": {
+    "id": "0198a3e8-2020-7d12-9ab1-124d2c100002",
+    "name": "STM32 Power Board",
+    "serial": { "id": "0198a3e8-2020-7d12-9ab1-124d2c100009", "portName": "COM3", "baudRate": 460800, "dataBits": 8, "stopBits": 1, "parity": "none", "flowControl": "none", "timeoutMs": 20 }
+  },
+  "framer": { "mode": "endDelimiter", "id": "0198a3e8-2020-7d12-9ab1-124d2c100003", "delimiter": [10], "maxFrameBytes": 65536 },
+  "checksum": null,
+  "decoder": { "kind": "csv", "id": "0198a3e8-2020-7d12-9ab1-124d2c100010", "delimiter": "," },
+  "channels": [
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100004", "name": "Temperature", "unit": "°C", "color": "#f1b761", "source": { "kind": "csvIndex", "index": 0 }, "transforms": [{ "kind": "ema", "id": "0198a3e8-2020-7d12-9ab1-124d2c100007", "alpha": 0.2 }] },
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100005", "name": "Voltage", "unit": "V", "color": "#7197ff", "source": { "kind": "csvIndex", "index": 1 }, "transforms": [] },
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100006", "name": "Current", "unit": "A", "color": "#46d8b1", "source": { "kind": "csvIndex", "index": 2 }, "transforms": [{ "kind": "movingAverage", "id": "0198a3e8-2020-7d12-9ab1-124d2c100008", "window": 8 }] }
+  ],
+  "commands": [],
+  "pidProfiles": [],
+  "views": [
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100011", "name": "Terminal", "kind": "terminal", "settings": {} },
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100012", "name": "Plotter", "kind": "plotter", "settings": {} },
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100013", "name": "Packets", "kind": "packets", "settings": {} },
+    { "id": "0198a3e8-2020-7d12-9ab1-124d2c100014", "name": "PID Tuner", "kind": "pidTuner", "settings": {} }
+  ],
+  "ui": {}
+}

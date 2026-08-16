@@ -1,0 +1,38 @@
+{
+  "id": "0198a3e8-3030-7e13-8cc2-9f64d2000001",
+  "name": "Binary CRC16 Telemetry",
+  "projectSchemaVersion": "1.0.0",
+  "pipelineSemanticVersion": "1.0.0",
+  "appVersion": "0.1.0",
+  "source": {
+    "id": "0198a3e8-3030-7e13-8cc2-9f64d2000002",
+    "name": "STM32 Binary Link",
+    "serial": { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000013", "portName": "COM12", "baudRate": 921600, "dataBits": 8, "stopBits": 1, "parity": "none", "flowControl": "none", "timeoutMs": 10 }
+  },
+  "framer": { "mode": "fixedLength", "id": "0198a3e8-3030-7e13-8cc2-9f64d2000003", "length": 12, "maxFrameBytes": 65536 },
+  "checksum": {
+    "id": "0198a3e8-3030-7e13-8cc2-9f64d2000004", "algorithm": "crc16Modbus",
+    "startOffset": 2, "endOffsetExclusive": 10, "storedOffset": 10, "storedWidth": 2, "byteOrder": "little"
+  },
+  "decoder": { "kind": "binary", "id": "0198a3e8-3030-7e13-8cc2-9f64d2000014", "fields": [
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000005", "name": "TemperatureRaw", "offset": 2, "fieldType": "i16", "byteOrder": "little", "scale": 0.1, "bias": 0.0, "unit": "°C" },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000006", "name": "VoltageRaw", "offset": 4, "fieldType": "u16", "byteOrder": "little", "scale": 0.001, "bias": 0.0, "unit": "V" },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000007", "name": "CurrentRaw", "offset": 6, "fieldType": "i16", "byteOrder": "little", "scale": 0.001, "bias": 0.0, "unit": "A" },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000008", "name": "RpmRaw", "offset": 8, "fieldType": "u16", "byteOrder": "little", "scale": 1.0, "bias": 0.0, "unit": "rpm" }
+  ] },
+  "channels": [
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000009", "name": "Temperature", "unit": "°C", "color": "#f1b761", "source": { "kind": "binaryField", "fieldId": "0198a3e8-3030-7e13-8cc2-9f64d2000005" }, "transforms": [] },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000010", "name": "Voltage", "unit": "V", "color": "#7197ff", "source": { "kind": "binaryField", "fieldId": "0198a3e8-3030-7e13-8cc2-9f64d2000006" }, "transforms": [] },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000011", "name": "Current", "unit": "A", "color": "#46d8b1", "source": { "kind": "binaryField", "fieldId": "0198a3e8-3030-7e13-8cc2-9f64d2000007" }, "transforms": [] },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000012", "name": "Speed", "unit": "rpm", "color": "#c985ff", "source": { "kind": "binaryField", "fieldId": "0198a3e8-3030-7e13-8cc2-9f64d2000008" }, "transforms": [] }
+  ],
+  "commands": [],
+  "pidProfiles": [],
+  "views": [
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000015", "name": "Terminal", "kind": "terminal", "settings": {} },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000016", "name": "Plotter", "kind": "plotter", "settings": {} },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000017", "name": "Packets", "kind": "packets", "settings": {} },
+    { "id": "0198a3e8-3030-7e13-8cc2-9f64d2000018", "name": "PID Tuner", "kind": "pidTuner", "settings": {} }
+  ],
+  "ui": {}
+}
