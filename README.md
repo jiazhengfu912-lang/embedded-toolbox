@@ -1,5 +1,7 @@
 # Embedded Toolbox
 
+English | [中文](README.zh.md)
+
 Windows-first desktop workbench for debugging, acquisition, protocol analysis, and manual PID tuning of STM32, ESP32, Arduino, and other USB-UART embedded devices.
 
 Built with Tauri 2, Rust, React, TypeScript, uPlot, and SQLite.
